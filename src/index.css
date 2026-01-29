@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+@theme {
+  /* Beer-themed colors */
+  --color-beer-amber: #F59E0B;
+  --color-beer-gold: #D97706;
+  --color-beer-dark: #92400E;
+  --color-beer-foam: #FEF3C7;
+  --color-beer-foamWhite: #FFFBEB;
+
+  /* Glass colors */
+  --color-glass-border: #9CA3AF;
+  --color-glass-shine: rgba(255, 255, 255, 0.3);
+  --color-glass-bg: rgba(255, 255, 255, 0.1);
+
+  /* App theme */
+  --color-theme-bg: #1F2937;
+  --color-theme-surface: #374151;
+  --color-theme-surfaceLight: #4B5563;
+  --color-theme-text: #F9FAFB;
+  --color-theme-textMuted: #9CA3AF;
+  --color-theme-accent: #3B82F6;
+  --color-theme-success: #10B981;
+  --color-theme-warning: #F59E0B;
+  --color-theme-danger: #EF4444;
+}
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--color-theme-bg);
+  color: var(--color-theme-text);
+  min-height: 100vh;
+  margin: 0;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* Slider track styles for Radix */
+.slider-track {
+  position: relative;
+  flex-grow: 1;
+  border-radius: 9999px;
+  height: 0.5rem;
+  background-color: var(--color-theme-surfaceLight);
+}
+
+.slider-range {
+  position: absolute;
+  border-radius: 9999px;
+  height: 100%;
+  background-color: var(--color-theme-accent);
+}
+
+.slider-thumb {
+  display: block;
+  width: 1.25rem;
+  height: 1.25rem;
+  background-color: white;
+  border-radius: 9999px;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+}
+
+.slider-thumb:hover {
+  background-color: #f3f4f6;
+}
+
+.slider-thumb:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-theme-accent);
+}
+
+/* Toggle styles */
+.toggle-root {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  padding: 0.375rem 0.75rem;
+  background-color: var(--color-theme-surfaceLight);
+  color: var(--color-theme-textMuted);
+  transition: background-color 0.15s, color 0.15s;
+}
+
+.toggle-root:hover {
+  background-color: var(--color-theme-surface);
+}
+
+.toggle-root[data-state="on"] {
+  background-color: var(--color-theme-accent);
+  color: white;
+}
