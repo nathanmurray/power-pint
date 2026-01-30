@@ -4,6 +4,7 @@ import {
   MW_MAX,
   MW_STEP,
   PF_MIN,
+  PF_MIN_FIXED_WORKLOAD,
   PF_MAX,
   PF_STEP,
   getPFStatus,
@@ -57,7 +58,7 @@ export function ControlPanel({
         <Slider
           label="Power Factor"
           value={powerFactor}
-          min={PF_MIN}
+          min={mode === 'fixedInfrastructure' ? PF_MIN : PF_MIN_FIXED_WORKLOAD}
           max={PF_MAX}
           step={PF_STEP}
           onChange={onPowerFactorChange}

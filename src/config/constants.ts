@@ -5,7 +5,8 @@ export const MW_DEFAULT = 5;
 export const MW_STEP = 0.1;
 
 // Power Factor constraints
-export const PF_MIN = 0.6;
+export const PF_MIN = 0;
+export const PF_MIN_FIXED_WORKLOAD = 0.6;
 export const PF_MAX = 1.0;
 export const PF_DEFAULT = 0.85;
 export const PF_STEP = 0.01;

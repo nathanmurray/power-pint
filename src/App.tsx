@@ -9,7 +9,7 @@ import { PowerTriangle } from './components/SingleLineDiagram';
 import { SineWaveView } from './components/SineWave';
 import { HelpModal } from './components/Help';
 import { usePowerCalculations, type Mode } from './hooks/usePowerCalculations';
-import { MW_DEFAULT, PF_DEFAULT, BASE_MVA } from './config/constants';
+import { MW_DEFAULT, PF_DEFAULT, BASE_MVA, PF_MIN_FIXED_WORKLOAD } from './config/constants';
 
 import './index.css';
 
@@ -17,7 +17,7 @@ function App() {
   // State
   const [serverLoad, setServerLoad] = useState(MW_DEFAULT);
   const [powerFactor, setPowerFactor] = useState(PF_DEFAULT);
-  const [mode, setMode] = useState<Mode>('fixedWorkload');
+  const [mode, setMode] = useState<Mode>('fixedInfrastructure');
   const [view, setView] = useState<'beer' | 'diagram' | 'wave'>('beer');
   const [isHelpOpen, setIsHelpOpen] = useState(false);
 
@@ -37,13 +37,21 @@ function App() {
     }
   };
 
+  // Handle mode change - clamp PF if switching to fixed workload
+  const handleModeChange = (newMode: Mode) => {
+    setMode(newMode);
+    if (newMode === 'fixedWorkload' && powerFactor < PF_MIN_FIXED_WORKLOAD) {
+      setPowerFactor(PF_MIN_FIXED_WORKLOAD);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-theme-bg">
       {/* Header */}
       <Header
         mode={mode}
         view={view}
-        onModeChange={setMode}
+        onModeChange={handleModeChange}
         onViewChange={setView}
         onHelpClick={() => setIsHelpOpen(true)}
       />
