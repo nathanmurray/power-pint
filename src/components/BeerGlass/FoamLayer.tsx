@@ -7,9 +7,10 @@ interface FoamLayerProps {
 }
 
 export function FoamLayer({ foamPercent, liquidTop }: FoamLayerProps) {
-  // Foam appears on top of liquid
-  const foamHeight = Math.min(foamPercent * 0.8, 60); // Max 60px foam
-  const foamTop = liquidTop - foamHeight;
+  // Foam always fills from liquid top to glass top
+  const glassTopPosition = 15; // Match glass top
+  const foamTop = glassTopPosition;
+  const foamHeight = Math.max(0, liquidTop - foamTop);
 
   // Glass width at foam position
   const topWidth = 150;
