@@ -35,7 +35,7 @@ export function BeerGlass({
       {/* SVG Container with scaling - scales with MVA, reaching 1.1 at 16.7 MVA */}
       <motion.div
         className="relative"
-        animate={{ scale: 0.4 + (mva / 16.7) * 0.7 }}
+        animate={{ scale: Math.min(0.4 + (mva / 16.7) * 0.7, 1.1) }}
         transition={glassSpring}
         style={{ originX: '50%', originY: '100%' }}
       >
